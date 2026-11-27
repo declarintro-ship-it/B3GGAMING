@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>B3G GAMING | Official Hub</title>
+<style>
+:root{color-scheme:dark;--bg:#07090d;--card:#0f141b;--line:#1f2937;--text:#f3f6fa;--muted:#8b97a6;--accent:#00e5ff;--accent2:#7c4dff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:radial-gradient(1000px 500px at 50% -100px,#12204a 0,var(--bg) 70%);color:var(--text);font-family:'Segoe UI',system-ui,Arial,sans-serif;line-height:1.5}
+nav{position:sticky;top:0;z-index:5;background:rgba(7,9,13,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;justify-content:center;gap:6px;padding:10px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:.85rem;padding:6px 12px;border-radius:20px}
+nav a:hover{color:var(--text);background:var(--card)}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px 30px}
+.hero{text-align:center;padding:56px 0 30px}
+.logo{width:92px;height:92px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:1.7rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;box-shadow:0 0 40px rgba(245,194,66,.45)}
+h1{font-size:clamp(2.2rem,7vw,3.6rem);margin:0;font-weight:900;letter-spacing:1px}
+.sub{color:var(--accent);letter-spacing:4px;font-size:.85rem;text-transform:uppercase;margin:4px 0 22px}
+.stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+.stat{min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 18px}
+.stat b{display:block;font-size:1.6rem;color:var(--accent)}
+.stat span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.cta{display:inline-block;background:#e62117;color:#fff;text-decoration:none;font-weight:700;padding:12px 26px;border-radius:30px}
+h2{font-size:1.5rem;margin:46px 0 4px}
+h2+p{color:var(--muted);margin:0 0 18px;font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.btn{display:block;text-decoration:none;color:var(--text);background:var(--card);padding:15px 18px;border-radius:12px;font-weight:600;border:1px solid var(--line);border-left:4px solid var(--accent);transition:.25s}
+.btn:hover{transform:translateY(-2px);background:#162030}
+.yt{border-left-color:#f00}.ig{border-left-color:#e1306c}.fb{border-left-color:#1877f2}.wa{border-left-color:#25d366}.ex{border-left-color:#ffa500}.ns{border-left-color:#8a2be2}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.card .body{padding:14px 16px}
+.card h3{margin:0 0 8px;font-size:1.1rem}
+.art svg{display:block;width:100%;height:auto}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.9rem;padding:5px 0;color:var(--muted);border-top:1px solid var(--line)}
+.row b{color:var(--text);word-break:break-all}
+.copy{background:none;border:1px solid var(--accent);color:var(--accent);border-radius:8px;padding:3px 10px;font-size:.75rem;cursor:pointer;flex-shrink:0}
+.vid{display:block;text-decoration:none;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.vid:hover{border-color:#f00}.vid small{color:var(--muted);display:block}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
+.tab{background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:20px;padding:8px 16px;cursor:pointer;font-size:.85rem}
+.tab.on{border-color:var(--accent);color:#000;background:var(--accent);font-weight:700}
+.game{display:none;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.game.on{display:block}
+canvas{width:100%;max-width:340px;background:#0b0f12;border:1px solid var(--accent);border-radius:12px;touch-action:none}
+.info{margin:8px 0;color:var(--muted);font-size:.9rem}
+.act{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;border:0;border-radius:10px;padding:10px 20px;font-weight:700;cursor:pointer;margin:6px 3px}
+.dpad{display:grid;grid-template-columns:repeat(3,56px);gap:6px;justify-content:center;margin-top:8px}
+.dpad button{height:48px;border-radius:10px;border:1px solid var(--line);background:#162030;color:var(--text);font-size:1.2rem}
+.arena{position:relative;width:100%;max-width:340px;height:300px;margin:0 auto;background:#0b0f12;border:1px solid var(--accent);border-radius:12px;overflow:hidden}
+.tgt{position:absolute;width:46px;height:46px;border-radius:50%;background:radial-gradient(#fff 12%,#f00 14%,#fff 38%,#f00 40%);border:0;padding:0;cursor:pointer}
+.ttt,.mem,.mole{display:grid;gap:6px;justify-content:center;margin:0 auto}
+.ttt{grid-template-columns:repeat(3,90px)}
+.ttt button{height:90px;font-size:2.2rem;font-weight:800;background:#162030;border:1px solid var(--line);color:var(--accent);border-radius:10px;cursor:pointer}
+.mem{grid-template-columns:repeat(4,68px)}
+.mem button,.mole button{height:68px;font-size:1.8rem;background:#162030;border:1px solid var(--line);border-radius:10px;cursor:pointer;color:var(--text)}
+.mem button.up{background:#1d3a52}
+.mole{grid-template-columns:repeat(3,84px)}.mole button{height:84px;border-radius:50%}
+.rx{width:100%;max-width:340px;height:200px;margin:0 auto;border-radius:14px;border:0;font-size:1.2rem;font-weight:700;color:#fff;background:#b3262e;cursor:pointer}
+.rx.go{background:#1faa59}.rx.wait{background:#c88a12}
+footer{text-align:center;color:#556;font-size:.8rem;padding:30px 0 10px}
+
+body::before{content:"";position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(245,194,66,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(245,194,66,.05) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at top,#000 20%,transparent 75%)}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);z-index:-1;opacity:.35;animation:fl 12s ease-in-out infinite alternate}
+.o1{width:320px;height:320px;background:#7c4dff;top:80px;left:-100px}.o2{width:280px;height:280px;background:#00e5ff;top:420px;right:-90px;animation-delay:-5s}
+@keyframes fl{to{transform:translate(40px,60px) scale(1.15)}}
+.logo{animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 70px rgba(124,77,255,.7)}}
+h1{background:linear-gradient(90deg,#fff,var(--accent),#b39dff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:10px}
+.ft{background:linear-gradient(160deg,#121a26,#0c1119);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:left;transition:.3s}
+.ft:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 10px 30px rgba(245,194,66,.12)}
+.ft i{font-style:normal;font-size:2rem;display:block;margin-bottom:6px}
+.ft b{display:block}.ft span{color:var(--muted);font-size:.85rem}
+.div{height:3px;margin:44px 0 0;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);border-radius:3px;opacity:.6}
+.card{transition:.3s}.card:hover{transform:translateY(-4px);box-shadow:0 12px 34px rgba(124,77,255,.2);border-color:#2b3a52}
+.form{display:grid;gap:10px;max-width:560px}
+.form input,.form textarea{width:100%;background:#0b0f16;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:12px;font:inherit}
+.form textarea{min-height:110px;resize:vertical}
+.cbtns{display:flex;gap:8px;flex-wrap:wrap}
+.lim{background:var(--card);border:1px solid var(--line);border-left:4px solid #ffb300;border-radius:12px;padding:16px 22px}
+.lim li{margin:6px 0;color:#c7d0db;font-size:.92rem}
+.opts{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.opts button{font-size:2rem;padding:10px 16px;border-radius:12px;border:1px solid var(--line);background:#162030;cursor:pointer}
+.big{font-size:3rem;margin:10px 0;min-height:60px}
+.game input{background:#0b0f16;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:10px;width:110px;font:inherit;text-align:center}
+.loot{font-size:4rem;margin:10px 0;min-height:80px}
+
+body::before,body::after{content:"";position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(90px);opacity:.28;z-index:-1;animation:fl 14s ease-in-out infinite alternate}
+body::before{background:#7c4dff;top:-100px;left:-120px}body::after{background:#00e5ff;bottom:-120px;right:-120px;animation-delay:-6s}
+@keyframes fl{to{transform:translate(60px,50px) scale(1.15)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{box-shadow:0 0 60px rgba(245,194,66,.8)}}
+.logo{position:relative;animation:pulse 3s infinite}
+.logo::after{content:"";position:absolute;inset:-12px;border-radius:50%;border:2px dashed var(--accent);animation:spin 14s linear infinite}
+h1{background:linear-gradient(90deg,#fff,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{display:flex;align-items:center;gap:10px}h2::before{content:"";width:6px;height:26px;border-radius:3px;background:linear-gradient(var(--accent),var(--accent2))}
+.card{transition:.3s}.card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 10px 30px rgba(245,194,66,.15)}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.gal figure{margin:0;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:.4s}.gal figure:hover img{transform:scale(1.08)}
+.gal button{position:absolute;top:6px;right:6px;background:#000a;color:#fff;border:0;border-radius:8px;cursor:pointer}
+.empty{color:var(--muted);border:1px dashed var(--line);border-radius:12px;padding:22px;text-align:center}
+.fm{display:grid;gap:8px;margin-bottom:14px}
+.fm input,.fm textarea{background:#0b0f12;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px;font:inherit}
+.msg{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px}.msg small{color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.lim li{margin:6px 0;color:var(--muted)}.lim b{color:var(--text)}
+.rps button{font-size:2.4rem;background:#162030;border:1px solid var(--line);border-radius:14px;padding:10px 16px;cursor:pointer;margin:4px}
+.fm .act{justify-self:start}.edit{margin:8px 16px 14px;font-size:.75rem}
+
+:root{--accent:#f5c242;--accent2:#ff8a00}
+.logo{width:150px;height:150px;background:#000;padding:0;box-shadow:0 0 50px rgba(245,194,66,.5);animation:glow 3s infinite}
+.logo img{width:100%;height:100%;border-radius:50%;display:block}
+.logo::after{inset:-10px;border-color:var(--accent)}
+@keyframes glow{50%{box-shadow:0 0 85px rgba(245,194,66,.9)}}
+h1{background:linear-gradient(90deg,#fff3c4,#f5c242,#ff8a00,#f5c242);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.hero{position:relative;overflow:hidden}
+.hero>*{position:relative;z-index:1}
+.sky{position:absolute;inset:0;z-index:0;pointer-events:none}
+.sky svg{position:absolute;top:-80px;opacity:.55;animation:drop linear infinite}
+@keyframes drop{to{transform:translate(30px,520px) rotate(8deg)}}
+.card .art{position:relative}
+.card .art::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(15,20,27,.9))}
+.stat{background:linear-gradient(160deg,#151c27,#0f141b);border-color:rgba(245,194,66,.3)}
+.btn:hover{box-shadow:0 8px 24px rgba(245,194,66,.18)}
+
+.pol{display:grid;gap:8px;margin-bottom:30px}
+.pol details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.pol details[open]{border-color:var(--accent)}
+.pol summary{cursor:pointer;font-weight:700}
+.pol ul{margin:10px 0 2px;padding-left:20px;color:var(--muted)}.pol li{margin:5px 0}
+.card .art svg{transition:transform .6s}.card:hover .art svg{transform:scale(1.05)}
+.card .art{overflow:hidden}
+
+:root[data-theme="light"]{--bg:#eef2f7;--card:#ffffff;--line:#d7dee6;--text:#131722;--muted:#5b6673}
+:root[data-theme="light"] body{background:radial-gradient(1000px 500px at 50% -100px,#fde9c0 0,var(--bg) 70%)}
+:root[data-theme="light"] .dpad button,:root[data-theme="light"] .ttt button,:root[data-theme="light"] .mem button,:root[data-theme="light"] .mole button{background:#fff}
+:root[data-theme="light"] canvas,:root[data-theme="light"] .arena{background:#f4f7fb}
+.themeBtn{background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:20px;padding:6px 12px;cursor:pointer;font-size:.9rem;margin-right:4px}
+
+@media (prefers-reduced-motion: reduce){body::before,body::after,.logo,.logo::after,h1,.sky svg{animation:none!important}}
+
+.ft{display:block;text-decoration:none;color:inherit;cursor:pointer}
+a.ft:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(245,194,66,.18)}
+/* restore distinct hover colors on social links, specific enough to beat the generic .btn:hover */
+a.btn.yt:hover{background:#f00;box-shadow:0 0 25px #f00}
+a.btn.ig:hover{background:#e1306c;box-shadow:0 0 25px #e1306c}
+a.btn.fb:hover{background:#1877f2;box-shadow:0 0 25px #1877f2}
+a.btn.wa:hover{background:#25d366;box-shadow:0 0 25px #25d366}
+a.btn.ex:hover{background:#ffa500;box-shadow:0 0 25px #ffa500}
+a.btn.ns:hover{background:#8a2be2;box-shadow:0 0 25px #8a2be2}
+
+.themeRow{display:flex;gap:4px;margin-right:6px}
+.sw{background:var(--card);border:1px solid var(--line);border-radius:14px;width:32px;height:32px;cursor:pointer;font-size:.9rem;padding:0}
+.sw.on{border-color:var(--accent);box-shadow:0 0 10px var(--accent)}
+:root[data-theme="neon"]{--bg:#05010a;--card:#120a22;--line:#2d1a4d;--text:#f2e9ff;--muted:#a594c4;--accent:#39ff88;--accent2:#ff2bd6}
+:root[data-theme="neon"] h1{background:linear-gradient(90deg,#39ff88,#ff2bd6,#39ff88);-webkit-background-clip:text;background-clip:text}
+:root[data-theme="fire"]{--bg:#120402;--card:#2a0b06;--line:#5a1d10;--text:#fff4e8;--muted:#d99a7a;--accent:#ff4d1f;--accent2:#ffb300}
+:root[data-theme="fire"] h1{background:linear-gradient(90deg,#ffb300,#ff4d1f,#ffb300);-webkit-background-clip:text;background-clip:text}
+
+.dc{background:linear-gradient(135deg,var(--card),transparent),var(--card);border:1px solid var(--accent);border-radius:16px;padding:16px 18px;margin:18px 0;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dc b{color:var(--accent);text-transform:uppercase;letter-spacing:2px;font-size:.75rem;display:block}
+.dc .dcbtn{margin-left:auto;background:var(--accent);color:#000;border:0;border-radius:10px;padding:8px 16px;font-weight:700;cursor:pointer;text-decoration:none}
+
+.hero{padding-top:30px}
+.heroArt{position:absolute;inset:0;z-index:0;opacity:.5;overflow:hidden;border-radius:0 0 40px 40px;mask-image:linear-gradient(#000 60%,transparent);pointer-events:none}
+.heroArt svg{width:100%;height:100%}
+.orbit{position:absolute;left:50%;top:150px;width:220px;height:220px;margin-left:-110px;pointer-events:none;z-index:1}
+.orbit span{position:absolute;left:50%;top:50%;font-size:1.6rem;animation:orb 16s linear infinite;animation-delay:calc(var(--i) * -4s);filter:drop-shadow(0 0 6px var(--accent))}
+@keyframes orb{from{transform:rotate(0deg) translateX(110px) rotate(0deg)}to{transform:rotate(360deg) translateX(110px) rotate(-360deg)}}
+@media (prefers-reduced-motion: reduce){.orbit span{animation:none}}
+.rankRow{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:14px}
+.rankBadge{background:var(--card);border:1px solid var(--accent);color:var(--accent);border-radius:20px;padding:6px 14px;font-weight:700;font-size:.85rem}
+
+/* ===== Claude-style calm redesign (overrides earlier game-neon styling) ===== */
+:root{color-scheme:light;--bg:#F7F3EC;--card:#FFFFFF;--line:#E8E1D3;--text:#3D3929;--muted:#8A8273;--accent:#CC785C;--accent2:#B35F45}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#1F1B16;--card:#2A241C;--line:#3D362A;--text:#F2ECDF;--muted:#A99F8C;--accent:#E0815E;--accent2:#CC785C}
+body{background:var(--bg)!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important}
+h1,h2{font-family:ui-serif,Georgia,"Times New Roman",serif!important}
+h1{background:none!important;color:var(--text)!important;font-weight:600!important;animation:none!important}
+h2::before{background:var(--accent)!important}
+.logo{width:116px;height:116px;border-radius:50%;border:3px solid var(--accent);background:var(--card);box-shadow:none!important;animation:none!important}
+.logo::after{display:none!important}
+.card,.stat,.vid,.msg,.dc,.pol details{box-shadow:0 1px 2px rgba(61,57,41,.06)!important}
+.card:hover{transform:translateY(-2px);border-color:var(--accent)!important;box-shadow:0 6px 16px rgba(61,57,41,.1)!important}
+.btn:hover{box-shadow:0 4px 12px rgba(61,57,41,.12)!important}
+.cta{background:var(--accent)!important}
+.act{background:var(--accent)!important;color:#fff!important}
+.tab.on{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}
+canvas,.arena,.dpad button,.ttt button,.mem button,.mole button{background:var(--bg)!important;border-color:var(--line)!important}
+.rankBadge{border-color:var(--accent);color:var(--accent)}
+.sw.on{border-color:var(--accent)!important;box-shadow:0 0 0 2px var(--accent) inset!important}
+nav{background:rgba(247,243,236,.9)!important}
+:root[data-theme="dark"] nav{background:rgba(31,27,22,.9)!important}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div>
+<nav><div class="themeRow" id="themeRow"><button class="sw" data-t="light" title="Light">☀️</button><button class="sw" data-t="dark" title="Dark">🌙</button></div><a href="#home">Home</a><a href="#games">Game Profiles</a><a href="#videosSec">Videos</a><a href="#arcade">Arcade</a><a href="#social">Social</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a><a href="#policy">Policy</a><a href="#limits">Limits</a></nav>
+<div class="wrap">
+  <section class="hero" id="home">
+    <div class="logo"><img src="data:image/jpeg;base64,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" alt="B3G GAMING logo"></div>
+    <h1 id="name"></h1>
+    <div class="sub" id="tagline"></div>
+    <div class="stats">
+      <div class="stat"><b id="subCount">…</b><span>YouTube Subscribers</span></div>
+      <div class="stat"><b id="bestSnake">0</b><span>Your Snake Best</span></div>
+    </div>
+    <a class="cta" id="cta" target="_blank" rel="noopener">Subscribe on YouTube</a>
+    <div class="stat" style="margin-top:10px;display:inline-block"><b id="visitCount">…</b><span>Site Visits</span></div>
+    <div class="rankRow">
+      <span class="rankBadge" id="rankBadge">🎮 Rookie</span>
+      <button class="sw" id="shareBtn" title="Share this page">🔗</button>
+    </div>
+  </section>
+
+  <div class="feat">
+    <a class="ft" href="#games"><i>🎯</i><b>BGMI</b><span>Battle royale gameplay and clips</span></a>
+    <a class="ft" href="#games"><i>🔥</i><b>Free Fire</b><span>Two accounts, daily action</span></a>
+    <a class="ft" href="#games"><i>🏡</i><b>Township</b><span>Building the B3GGAMING town</span></a>
+    <a class="ft" href="#arcade" id="ftArcade"><i>🕹️</i><b>10 Offline Games</b><span>Play right here, no internet</span></a>
+  </div>
+  <div class="div"></div>
+
+  <h2 id="games">Game Profiles</h2><p>My IDs across games. Tap Copy to use them.</p>
+  <div class="grid" id="ids"></div>
+
+  <h2 id="videosSec">Videos</h2><p>Latest from the channel.</p>
+  <div id="videos"></div>
+
+  <div class="dc" id="dailyChallenge"></div>
+  <h2 id="arcade">Offline Arcade</h2><p>10 games that work with no internet once the page is open.</p>
+  <div class="tabs">
+    <button class="tab on" data-g="snake">Snake</button>
+    <button class="tab" data-g="aim">Aim Trainer</button>
+    <button class="tab" data-g="ttt">Tic-Tac-Toe</button>
+    <button class="tab" data-g="mem">Memory</button>
+    <button class="tab" data-g="rx">Reaction</button>
+    <button class="tab" data-g="mole">Whack-a-Target</button>
+    <button class="tab" data-g="rps">Rock Paper Scissors</button>
+    <button class="tab" data-g="guess">Number Guess</button>
+    <button class="tab" data-g="loot">Loot Box</button>
+    <button class="tab" data-g="flap">Flappy</button>
+  </div>
+
+  <div class="game on" id="g-snake">
+    <canvas id="sc" width="340" height="340"></canvas>
+    <div class="info">Score: <b id="sScore">0</b></div>
+    <button class="act" id="sStart">Start</button>
+    <div class="dpad"><span></span><button data-d="u">▲</button><span></span><button data-d="l">◀</button><button data-d="d">▼</button><button data-d="r">▶</button></div>
+  </div>
+  <div class="game" id="g-aim">
+    <div class="info">Hit as many targets as you can in 20 seconds.<br>Time: <b id="aT">20</b> | Score: <b id="aS">0</b> | Best: <b id="aB">0</b></div>
+    <div class="arena" id="arena"></div>
+    <button class="act" id="aStart">Start</button>
+  </div>
+  <div class="game" id="g-ttt">
+    <div class="info" id="tMsg"></div><div class="ttt" id="board"></div>
+    <button class="act" id="tReset">New Game</button>
+  </div>
+  <div class="game" id="g-mem">
+    <div class="info">Find all pairs. Moves: <b id="mM">0</b> | Best: <b id="mB">-</b></div>
+    <div class="mem" id="mem"></div><button class="act" id="mReset">New Game</button>
+  </div>
+  <div class="game" id="g-rx">
+    <div class="info">Click when the box turns green. Best: <b id="rB">-</b> ms</div>
+    <button class="rx" id="rx">Click to start</button>
+  </div>
+  <div class="game" id="g-mole">
+    <div class="info">Hit targets in 20 seconds. Time: <b id="oT">20</b> | Score: <b id="oS">0</b> | Best: <b id="oB">0</b></div>
+    <div class="mole" id="mole"></div><button class="act" id="oStart">Start</button>
+  </div>
+
+  <div class="game" id="g-rps">
+    <div class="info">Best of luck! Wins: <b id="rW">0</b> | Losses: <b id="rL">0</b> | Draws: <b id="rD">0</b></div>
+    <div class="big" id="rOut">❔ vs ❔</div>
+    <div class="opts"><button data-r="0">✊</button><button data-r="1">✋</button><button data-r="2">✌️</button></div>
+  </div>
+  <div class="game" id="g-guess">
+    <div class="info" id="gMsg">I picked a number from 1 to 100. Can you find it?</div>
+    <input id="gIn" type="number" min="1" max="100" inputmode="numeric"> <button class="act" id="gGo">Guess</button>
+    <div class="info">Tries: <b id="gT">0</b> | Best: <b id="gB">-</b></div>
+    <button class="act" id="gNew">New Number</button>
+  </div>
+  <div class="game" id="g-loot">
+    <div class="info">Open a crate and see what you get. Just for fun, no real prizes.</div>
+    <div class="loot" id="lOut">🎁</div><div class="info" id="lName">Tap Open</div>
+    <button class="act" id="lGo">Open Crate</button>
+  </div>
+
+  <div class="game" id="g-flap"><canvas id="fc" width="340" height="400"></canvas>
+    <div class="info">Tap the screen or press Space to flap. Score: <b id="fS">0</b> | Best: <b id="fB">0</b></div><button class="act" id="fGo">Start</button></div>
+
+  <div class="div"></div>
+  <h2 id="gallery">Photo Gallery</h2><p>Screenshots and moments from the games.</p>
+  <div id="galTools"></div><div class="gal" id="gal"></div>
+
+  <div class="div"></div>
+  <h2 id="contact">Connect With Me</h2><p>Write your message here, then send it with the app you like.</p>
+  <div class="form">
+    <input id="cName" placeholder="Your name" maxlength="40">
+    <textarea id="cMsg" placeholder="Write your comment or message" maxlength="500"></textarea>
+    <div class="cbtns" id="cBtns">
+      <button class="act" id="cCopy">Copy Message</button>
+    </div>
+    <div class="info" id="cNote"></div>
+  </div>
+  <h3 style="margin:22px 0 10px">Public comments</h3>
+  <div class="info">By posting a comment you accept the <a href="#policy" style="color:var(--accent)">Page Policy</a>.</div>
+  <div class="two"><div id="gbForm"></div><div id="gbList"></div></div>
+
+  <h2 id="policy">Page Policy</h2><p>Strict rules for everyone using this page. Last updated: 25 November 2026.</p>
+  <div class="pol">
+    <details open><summary>1. Respect and comments</summary><ul><li>No abuse, hate speech, threats, bullying or harassment of any person, team or community.</li><li>No spam, advertising, scam links, giveaways, betting or any adult content.</li><li>Do not pretend to be B3G GAMING or any other person.</li><li>Comments that break these rules are removed without notice, and repeat offenders are blocked.</li></ul></details>
+    <details><summary>2. Fair play</summary><ul><li>Hacks, cheats, mods, account selling, boosting and any unfair tools are not allowed here, and requests for them will be removed.</li><li>Do not ask for or share accounts, passwords, OTP codes or login links.</li></ul></details>
+    <details><summary>3. Privacy and safety</summary><ul><li>Never post your phone number, address, passwords, OTP codes or payment details. Comments are public.</li><li>A comment stores only the name and message you type, linked to your claude.ai account. Best scores in the games are saved only in your own browser.</li><li>Game IDs on this page are shown for friends to find me. Do not misuse them.</li></ul></details>
+    <details><summary>4. Copyright and ownership</summary><ul><li>BGMI, Free Fire, Township and all other game names, logos and characters belong to their owners. This is an independent fan page and is not made by or connected to them.</li><li>The banners and graphics here are original drawings made for this page. Do not copy them or the B3G GAMING logo without written permission.</li></ul></details>
+    <details><summary>5. Age and spending</summary><ul><li>Mobile games can have in-app purchases. Players under 18 should ask a parent or guardian before playing long hours or spending money.</li><li>The Loot Box game on this page is only for fun. It has no real prizes and no real money.</li></ul></details>
+    <details><summary>6. Links, reports and changes</summary><ul><li>Links to other websites are not controlled by this page. Use them at your own risk.</li><li>To report a comment, a wrong detail or a copyright problem, message me on WhatsApp or Instagram using the Connect section.</li><li>The owner may change this policy or remove any content at any time. Using the page means you accept it.</li></ul></details>
+  </div>
+
+  <h2 id="limits">Limitations of This Page</h2><p>Good to know before you use it.</p>
+  <ul class="lim">
+    <li>Public comments can be posted only by people signed in to claude.ai. Everyone else can read them or send a message through WhatsApp, Instagram or email. Only the page owner or an editor can add or remove gallery photos.</li>
+    <li>The subscriber count and newest video update automatically only if the file is hosted on your own site with a YouTube API key. On this link they stay manual.</li>
+    <li>Game scores and best records are saved only in each visitor’s own browser. They are not shared and are lost if the browser data is cleared.</li>
+    <li>The site visit count is a shared number for everyone, not personal data about any one visitor. Your theme choice (dark or light) is saved only in your own browser.</li>
+    <li>The game banners are original illustrations, not official BGMI or Free Fire art. The owner can upload their own screenshots with the Use my screenshot button. Official logos and images belong to their owners.</li>
+    <li>Game IDs and UIDs on this page are public. Never post passwords or login codes.</li>
+    <li>The offline games need the page to be opened once. They are simple games made for fun, not esports tools.</li>
+  </ul>
+
+  <h2 id="social">Social Links</h2><p>Follow B3G GAMING everywhere.</p>
+  <div class="grid" id="links"></div>
+  <footer id="footer"></footer>
+</div>
+
+<script>
+/* ============ CUSTOMIZE YOUR SITE HERE ============ */
+const CONFIG = {
+  name: "B3G GAMING",
+  tagline: "Official Hub",
+  township: "B3GGAMING",
+  contactEmail: "",      // add your email to show an Email button
+  contactWhatsApp: "",   // number with country code, no plus (example 919876543210)            // your Township ID name
+  footer: "© 2026 | B3G GAMING",
+
+  links: [
+    {label:"YouTube Channel",   url:"https://youtube.com/@b3ggaming?si=V3xilWqXs3HHQCFg", cls:"yt"},
+    {label:"Instagram",         url:"https://www.instagram.com/b3gga_ming?igsh=MWJqYWg3dDRtbDEzOQ==", cls:"ig"},
+    {label:"Facebook Profile",  url:"https://www.facebook.com/profile.php?id=61570396735329", cls:"fb"},
+    {label:"WhatsApp Channel",  url:"https://whatsapp.com/channel/0029VaVDq3DChq6FNobmlP2p", cls:"wa"},
+    {label:"Explurger Profile", url:"https://explurger.com/pf/5l24xr6k0ocaui734", cls:"ex"},
+    {label:"Nostra Gaming Profile", url:"https://nostra.gg/profile/b3ggaming", cls:"ns"}
+  ],
+
+  gameIds: [
+    {game:"BGMI", art:"bgmi",        rows:[{label:"ID Name", value:"tsbrupam"}, {label:"UID", value:"55632020037"}]},
+    {game:"Free Fire 1", art:"ff", rows:[{label:"ID Name", value:"kelseyA3948E"}, {label:"UID", value:"2365339708"}]},
+    {game:"Free Fire 2", art:"ff2", rows:[{label:"ID Name", value:"#ds#rupam#"}, {label:"UID", value:"7978498853"}]},
+    {game:"Township", art:"town",    rows:[{label:"ID Name", value:"B3GGAMING"}]}
+  ],
+
+  /* Add your video links here. Paste any YouTube link and a title. */
+  videos: [
+    // {title:"My best BGMI clutch", url:"https://youtu.be/XXXXXXXXXXX"},
+  ],
+
+  /* Subscriber count shown when live update is not available. Update by hand. */
+  subscribersFallback: "—",
+
+  /* AUTO UPDATE (subscribers + newest video):
+     works when this file is hosted on your own site (GitHub Pages, Netlify, etc.).
+     1) Get a free YouTube Data API key (Google Cloud Console)
+     2) Paste it below, plus your channel ID (starts with UC) */
+  youtubeApiKey: "",
+  youtubeChannelId: ""
+};
+/* =================================================== */
+
+const $ = id => document.getElementById(id);
+const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h !== undefined) e.textContent = h; return e; };
+
+/* ---- Render content ---- */
+document.title = CONFIG.name + " | " + CONFIG.tagline;
+$("name").textContent = CONFIG.name;
+$("tagline").textContent = CONFIG.tagline;
+$("footer").textContent = CONFIG.footer;
+$("subCount").textContent = CONFIG.subscribersFallback;
+
+CONFIG.links.forEach(l => { const a = el("a", "btn " + l.cls, l.label); a.href = l.url; a.target = "_blank"; a.rel = "noopener"; $("links").appendChild(a); });
+
+const chute = (x, y, s, c) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-30 0C-30-34 30-34 30 0Q15-8 0 0Q-15-8-30 0Z" fill="${c}"/><path d="M-30 0 0 38M30 0 0 38M-10-2 0 38M10-2 0 38" stroke="#fff" stroke-width="1" opacity=".75"/><circle cx="0" cy="42" r="5" fill="#111"/><rect x="-4" y="46" width="8" height="12" rx="3" fill="#111"/></g>`;
+const flame = (x, y, s, a, b) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 60C-40 50-48 10-18-22 -14 0 0 4 4-12 18 8 44 28 24 54 18 62 8 62 0 60Z" fill="${a}"/><path d="M2 56C-18 50-22 28-8 10-6 22 4 24 8 14 18 28 24 44 10 54 8 56 4 57 2 56Z" fill="${b}"/></g>`;
+const cross = (x, y, r) => `<g stroke="#fff" stroke-width="2.5" fill="none" opacity=".9"><circle cx="${x}" cy="${y}" r="${r}"/><path d="M${x} ${y - r - 8}v14M${x} ${y + r - 6}v14M${x - r - 8} ${y}h14M${x + r - 6} ${y}h14"/></g><circle cx="${x}" cy="${y}" r="3" fill="#f33"/>`;
+const stars = `<g fill="#fff" opacity=".7"><circle cx="40" cy="20" r="1.5"/><circle cx="120" cy="34" r="1"/><circle cx="210" cy="14" r="1.5"/><circle cx="260" cy="40" r="1"/><circle cx="370" cy="22" r="1.5"/></g>`;
+const vig = id => `<radialGradient id="${id}" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".7"/></radialGradient>`;
+const blur = (id, n) => `<filter id="${id}" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="${n}"/></filter>`;
+const rays = (x, y, c) => `<g fill="${c}" opacity=".16">${[-60, -35, -10, 15, 40, 65].map(a => `<path d="M${x} ${y}L${x + Math.sin(a / 57) * 420 - 14} ${y + Math.cos(a / 57) * 420}L${x + Math.sin(a / 57) * 420 + 14} ${y + Math.cos(a / 57) * 420}Z"/>`).join("")}</g>`;
+const soldier = (x, y, s, rim) => `<g transform="translate(${x} ${y}) scale(${s})"><g fill="#090b08" stroke="${rim}" stroke-width=".9" stroke-opacity=".85"><path d="M-9-30Q0-44 9-30L10-25H-10Z"/><circle cx="0" cy="-24" r="7"/><path d="M-13-17H13L15 6H-15Z"/><rect x="-21" y="-15" width="9" height="19" rx="3"/><path d="M-12 6H-2L-4 34H-12ZM2 6H12L14 34H5Z"/><path d="M4-10 36-3 36 0 4 0Z"/><path d="M-4-12H8V-4H-4Z"/></g><path d="M-13-10H13" stroke="${rim}" stroke-width="1" opacity=".5"/></g>`;
+const hood = (x, y, s, rim) => `<g transform="translate(${x} ${y}) scale(${s})"><g fill="#0a0610" stroke="${rim}" stroke-width=".9" stroke-opacity=".9"><path d="M-14-34Q0-56 14-34L16-14Q0-6-16-14Z"/><path d="M-18-14Q0-4 18-14L24 10H-24Z"/><path d="M-24 10H-6L-8 36H-20ZM6 10H24L20 36H8Z"/></g><path d="M-9-28Q0-20 9-28" stroke="#ffd54a" stroke-width="2" fill="none"/><circle cx="-4" cy="-25" r="1.7" fill="#ffd54a"/><circle cx="4" cy="-25" r="1.7" fill="#ffd54a"/></g>`;
+const embers = c => `<g fill="${c}">${[[60,40,1.4],[110,90,1],[170,30,1.6],[210,70,1],[250,20,1.3],[330,55,1.4],[372,95,1],[30,110,1.2],[290,18,1]].map(([a, b, r]) => `<circle cx="${a}" cy="${b}" r="${r}" opacity=".8"/>`).join("")}</g>`;
+const title = (t, sub, x, anchor, subc) => `<g text-anchor="${anchor}" font-family="Impact,Arial Black,Arial"><text x="${x}" y="122" font-size="36" font-weight="900" fill="#fff" stroke="#000" stroke-opacity=".55" stroke-width="3" paint-order="stroke" letter-spacing="2">${t}</text><text x="${x}" y="139" font-size="10.5" fill="${subc}" letter-spacing="4" font-family="Arial" font-weight="700">${sub}</text></g>`;
+const ART = {
+ bgmi:`<svg viewBox="0 0 400 150"><defs><linearGradient id="a1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f1a33"/><stop offset=".45" stop-color="#7a4a5a"/><stop offset=".75" stop-color="#f08a3c"/><stop offset="1" stop-color="#ffd27a"/></linearGradient><linearGradient id="a2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d4a3a"/><stop offset="1" stop-color="#1c261a"/></linearGradient>${blur("a3", 8)}${vig("a4")}</defs><rect width="400" height="150" fill="url(#a1)"/>${embers("#fff3c4").replace(/opacity=".8"/g, 'opacity=".5"')}<circle cx="300" cy="96" r="46" fill="#ffd27a" filter="url(#a3)" opacity=".85"/><circle cx="300" cy="96" r="22" fill="#fff1c1"/>${rays(300, 96, "#ffe3a0")}<path d="M0 104 50 74 95 98 150 58 215 100 265 80 330 104 400 78V150H0Z" fill="#53506a" opacity=".75"/><path d="M0 120 70 88 125 116 200 76 270 118 340 92 400 116V150H0Z" fill="url(#a2)"/><path d="M0 138 90 122 190 136 300 118 400 134V150H0Z" fill="#0b120a"/>${soldier(300, 104, 1, "#ffd27a")}${chute(240, 26, .85, "#f5c242")}${chute(350, 30, .5, "#ef5350")}<g transform="translate(206 100)"><rect width="22" height="16" rx="2" fill="#26331f" stroke="#f5c242" stroke-width="1"/><path d="M0 8h22M11 0v16" stroke="#f5c242" stroke-width="1.2"/></g>${cross(70, 62, 22)}${title("BGMI", "BATTLEGROUNDS MOBILE", 22, "start", "#ffe3a0")}<rect width="400" height="150" fill="url(#a4)"/></svg>`,
+ ff:`<svg viewBox="0 0 400 150"><defs><linearGradient id="b1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0505"/><stop offset=".55" stop-color="#8f1d0c"/><stop offset="1" stop-color="#ff8a1f"/></linearGradient>${blur("b3", 9)}${vig("b4")}</defs><rect width="400" height="150" fill="url(#b1)"/><ellipse cx="305" cy="90" rx="80" ry="60" fill="#ffb300" filter="url(#b3)" opacity=".7"/>${flame(305, 26, 1.25, "#ff7a18", "#ffd54a")}${flame(240, 60, .6, "#ff5722", "#ffc947")}${flame(370, 58, .55, "#ff5722", "#ffc947")}${embers("#ffd54a")}<path d="M0 126 60 110 130 128 210 106 290 130 400 112V150H0Z" fill="#240606"/>${hood(305, 112, 1.05, "#ffb347")}<path d="M0 140 100 130 200 142 320 128 400 140V150H0Z" fill="#120303"/><g fill="none" stroke="#ffd54a" stroke-width="2.5"><path d="M22 16 42 8 62 16V36Q42 50 22 36Z"/><path d="M32 22h20M32 30h20"/></g>${title("FREE FIRE", "MAIN ACCOUNT", 22, "start", "#ffd9a0")}<rect width="400" height="150" fill="url(#b4)"/></svg>`,
+ ff2:`<svg viewBox="0 0 400 150"><defs><linearGradient id="c1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d0420"/><stop offset=".55" stop-color="#5b1a8a"/><stop offset="1" stop-color="#ff5a3c"/></linearGradient>${blur("c3", 9)}${vig("c4")}</defs><rect width="400" height="150" fill="url(#c1)"/><g transform="translate(400 0) scale(-1 1)"><ellipse cx="305" cy="90" rx="80" ry="60" fill="#ff7a5a" filter="url(#c3)" opacity=".6"/>${flame(305, 26, 1.25, "#ff8a3c", "#ffe9a8")}${flame(240, 60, .6, "#e040fb", "#ffc2ff")}${embers("#ffe9a8")}<path d="M0 126 60 110 130 128 210 106 290 130 400 112V150H0Z" fill="#12041f"/>${hood(305, 112, 1.05, "#ff9e7a")}<path d="M0 140 100 130 200 142 320 128 400 140V150H0Z" fill="#090214"/></g>${chute(40, 26, .6, "#ffd54a")}${title("FREE FIRE", "SECOND ACCOUNT", 380, "end", "#e9c8ff")}<rect width="400" height="150" fill="url(#c4)"/></svg>`,
+ town:`<svg viewBox="0 0 400 150"><defs><linearGradient id="d1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b8fd8"/><stop offset="1" stop-color="#d6f0ff"/></linearGradient>${blur("d3", 5)}${vig("d4")}</defs><rect width="400" height="150" fill="url(#d1)"/><circle cx="352" cy="30" r="16" fill="#fff59d"/><circle cx="352" cy="30" r="30" fill="#fff59d" filter="url(#d3)" opacity=".7"/><g fill="#fff" opacity=".92"><ellipse cx="90" cy="30" rx="28" ry="9"/><ellipse cx="114" cy="24" rx="18" ry="9"/><ellipse cx="250" cy="42" rx="26" ry="8"/></g><path d="M0 100Q90 70 190 98T400 90V150H0Z" fill="#7cb342"/><path d="M0 120Q120 100 240 120T400 112V150H0Z" fill="#558b2f"/><rect x="0" y="134" width="400" height="16" fill="#8d6e63"/><path d="M0 142H400" stroke="#d7ccc8" stroke-width="2" stroke-dasharray="14 10"/><g><rect x="226" y="82" width="54" height="40" fill="#ef5350"/><path d="M218 84 253 54 288 84Z" fill="#5d4037"/><rect x="244" y="98" width="14" height="24" fill="#ffe082"/><rect x="232" y="92" width="9" height="9" fill="#fff9c4"/><rect x="264" y="92" width="9" height="9" fill="#fff9c4"/><rect x="266" y="60" width="8" height="16" fill="#8d6e63"/></g><g><rect x="298" y="96" width="46" height="26" fill="#ffca28"/><path d="M291 98 321 76 351 98Z" fill="#8d6e63"/><rect x="314" y="104" width="12" height="18" fill="#6d4c41"/></g><g><rect x="176" y="58" width="18" height="64" fill="#eceff1"/><path d="M168 60 185 40 202 60Z" fill="#c62828"/><circle cx="185" cy="76" r="5" fill="#4fc3f7"/></g><g stroke="#6d4c41" stroke-width="3"><path d="M208 112v10M372 112v10"/></g><g fill="#2e7d32"><circle cx="208" cy="104" r="12"/><circle cx="372" cy="100" r="15"/></g><g transform="translate(60 30)"><ellipse cx="0" cy="0" rx="16" ry="19" fill="#ff7043"/><path d="M-16 0Q0 22 16 0" fill="#ffd54a"/><path d="M-6 17 -4 28H4L6 17" stroke="#5d4037" stroke-width="1.5" fill="#8d6e63"/></g>${title("TOWNSHIP", "B3GGAMING TOWN", 22, "start", "#ffffff").replace('y="122"', 'y="108"').replace('y="139"', 'y="124"')}<rect width="400" height="150" fill="url(#d4)"/></svg>`
+};
+CONFIG.gameIds.forEach(g => {
+  const c = el("div", "card"); const a = el("div", "art"); a.innerHTML = ART[g.art] || ""; c.dataset.k = g.art; c.appendChild(a);
+  const body = el("div", "body"); body.appendChild(el("h3", "", g.game)); c.appendChild(body);
+  g.rows.forEach(r => {
+    const row = el("div", "row"); row.appendChild(el("span", "", r.label));
+    row.appendChild(el("b", "", r.value));
+    const b = el("button", "copy", "Copy");
+    b.onclick = () => { try { navigator.clipboard.writeText(r.value); b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1200); } catch (e) {} };
+    row.appendChild(b); body.appendChild(row);
+  });
+  $("ids").appendChild(c);
+});
+$("cta").href = CONFIG.links[0].url;
+
+function addVideo(title, url, note) {
+  const a = el("a", "vid"); a.href = url; a.target = "_blank"; a.rel = "noopener";
+  a.appendChild(el("div", "", "▶ " + title)); if (note) a.appendChild(el("small", "", note));
+  $("videos").appendChild(a);
+}
+CONFIG.videos.forEach(v => addVideo(v.title, v.url));
+if (!CONFIG.videos.length) addVideo("Watch my videos on YouTube", CONFIG.links[0].url, "Tap to open the channel");
+
+/* ---- YouTube auto update (needs API key, only on your own hosting) ---- */
+(async () => {
+  if (!CONFIG.youtubeApiKey || !CONFIG.youtubeChannelId) return;
+  try {
+    const k = CONFIG.youtubeApiKey, ch = CONFIG.youtubeChannelId;
+    const s = await (await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${ch}&key=${k}`)).json();
+    $("subCount").textContent = Number(s.items[0].statistics.subscriberCount).toLocaleString();
+    const v = await (await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${ch}&order=date&type=video&maxResults=3&key=${k}`)).json();
+    $("videos").textContent = "";
+    v.items.forEach((it, i) => addVideo(it.snippet.title, "https://www.youtube.com/watch?v=" + it.id.videoId, i === 0 ? "Newest upload" : ""));
+    CONFIG.videos.forEach(x => addVideo(x.title, x.url));
+  } catch (e) { /* keep fallback */ }
+})();
+
+/* ---- Best scores (kept in this browser only) ---- */
+const store = {
+  get: k => { try { return Number(localStorage.getItem(k)) || 0; } catch (e) { return 0; } },
+  set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} }
+};
+$("bestSnake").textContent = store.get("b3g_snake");
+$("aB").textContent = store.get("b3g_aim");
+
+/* ---- Tabs ---- */
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === t));
+  document.querySelectorAll(".game").forEach(g => g.classList.toggle("on", g.id === "g-" + t.dataset.g));
+  if (t.dataset.g !== "snake") stopSnake();
+});
+
+/* ---- Snake ---- */
+const cv = $("sc"), cx = cv.getContext("2d"), N = 17, S = 20;
+let snake, dir, nd, food, timer = null, score = 0;
+function drawSnake() {
+  cx.fillStyle = "#0b0f12"; cx.fillRect(0, 0, 340, 340);
+  cx.fillStyle = "#ff3355"; cx.fillRect(food.x * S + 2, food.y * S + 2, S - 4, S - 4);
+  snake.forEach((p, i) => { cx.fillStyle = i ? "#00c8d4" : "#00f2ff"; cx.fillRect(p.x * S + 1, p.y * S + 1, S - 2, S - 2); });
+}
+function placeFood() { do { food = {x: Math.floor(Math.random() * N), y: Math.floor(Math.random() * N)}; } while (snake.some(p => p.x === food.x && p.y === food.y)); }
+function stopSnake() { clearInterval(timer); timer = null; }
+function startSnake() {
+  stopSnake(); snake = [{x: 8, y: 8}, {x: 7, y: 8}, {x: 6, y: 8}]; dir = nd = {x: 1, y: 0}; score = 0; $("sScore").textContent = 0;
+  placeFood(); drawSnake(); $("sStart").textContent = "Restart";
+  timer = setInterval(() => {
+    dir = nd; const h = {x: snake[0].x + dir.x, y: snake[0].y + dir.y};
+    if (h.x < 0 || h.y < 0 || h.x >= N || h.y >= N || snake.some(p => p.x === h.x && p.y === h.y)) {
+      stopSnake(); if (score > store.get("b3g_snake")) { store.set("b3g_snake", score); $("bestSnake").textContent = score; }
+      cx.fillStyle = "rgba(0,0,0,.6)"; cx.fillRect(0, 0, 340, 340); cx.fillStyle = "#fff"; cx.font = "bold 28px sans-serif"; cx.textAlign = "center"; cx.fillText("Game Over", 170, 175); return;
+    }
+    snake.unshift(h);
+    if (h.x === food.x && h.y === food.y) { score++; $("sScore").textContent = score; placeFood(); } else snake.pop();
+    drawSnake();
+  }, 120);
+}
+function turn(d) {
+  const m = {u: {x: 0, y: -1}, d: {x: 0, y: 1}, l: {x: -1, y: 0}, r: {x: 1, y: 0}}[d];
+  if (dir && !(m.x === -dir.x && m.y === -dir.y)) nd = m;
+}
+$("sStart").onclick = startSnake;
+document.querySelectorAll(".dpad button").forEach(b => b.onclick = () => turn(b.dataset.d));
+addEventListener("keydown", e => {
+  const k = {ArrowUp: "u", ArrowDown: "d", ArrowLeft: "l", ArrowRight: "r"}[e.key];
+  if (k && timer) { e.preventDefault(); turn(k); }
+});
+let tx, ty;
+cv.addEventListener("touchstart", e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive: true});
+cv.addEventListener("touchend", e => {
+  const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+  if (Math.max(Math.abs(dx), Math.abs(dy)) < 20) return;
+  turn(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "r" : "l") : (dy > 0 ? "d" : "u"));
+});
+snake = [{x: 8, y: 8}]; food = {x: 12, y: 8}; drawSnake();
+
+/* ---- Aim trainer ---- */
+let aScore = 0, aTime = 20, aTimer = null;
+function spawn() {
+  const ar = $("arena"); ar.textContent = ""; if (aTime <= 0) return;
+  const t = el("button", "tgt"); t.setAttribute("aria-label", "target");
+  t.style.left = Math.random() * (ar.clientWidth - 46) + "px"; t.style.top = Math.random() * (ar.clientHeight - 46) + "px";
+  t.onpointerdown = () => { aScore++; $("aS").textContent = aScore; spawn(); };
+  ar.appendChild(t);
+}
+$("aStart").onclick = () => {
+  clearInterval(aTimer); aScore = 0; aTime = 20; $("aS").textContent = 0; $("aT").textContent = 20; spawn();
+  aTimer = setInterval(() => {
+    aTime--; $("aT").textContent = aTime;
+    if (aTime <= 0) { clearInterval(aTimer); $("arena").textContent = ""; if (aScore > store.get("b3g_aim")) { store.set("b3g_aim", aScore); $("aB").textContent = aScore; } }
+  }, 1000);
+};
+
+/* ---- Tic-Tac-Toe ---- */
+let bd, over;
+const L = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+const win = p => L.some(l => l.every(i => bd[i] === p));
+function tRender() { document.querySelectorAll("#board button").forEach((b, i) => b.textContent = bd[i] || ""); }
+function tNew() { bd = Array(9).fill(""); over = false; $("tMsg").textContent = "You are X. Your move."; tRender(); }
+function tMove(i) {
+  if (over || bd[i]) return; bd[i] = "X";
+  if (win("X")) { over = true; $("tMsg").textContent = "You win!"; return tRender(); }
+  const free = bd.map((v, j) => v ? -1 : j).filter(j => j >= 0);
+  if (!free.length) { over = true; $("tMsg").textContent = "Draw."; return tRender(); }
+  let pick = null;
+  for (const p of ["O", "X"]) for (const j of free) { bd[j] = p; const w = win(p); bd[j] = ""; if (w && pick === null) pick = j; }
+  if (pick === null) pick = bd[4] ? free[Math.floor(Math.random() * free.length)] : 4;
+  bd[pick] = "O";
+  if (win("O")) { over = true; $("tMsg").textContent = "Computer wins."; }
+  else if (!bd.includes("")) { over = true; $("tMsg").textContent = "Draw."; }
+  tRender();
+}
+for (let i = 0; i < 9; i++) { const b = el("button"); b.onclick = () => tMove(i); $("board").appendChild(b); }
+$("tReset").onclick = tNew; tNew();
+
+/* ---- Memory ---- */
+let mFirst = null, mLock = false, mMoves = 0, mLeft = 6;
+function mNew() {
+  const e = ["🎯","🔥","🏆","🚀","⚡","👑"], d = e.concat(e).sort(() => Math.random() - .5);
+  const m = $("mem"); m.textContent = ""; mFirst = null; mLock = false; mMoves = 0; mLeft = 6; $("mM").textContent = 0;
+  d.forEach(v => { const b = el("button", "", "?"); b.onclick = () => {
+    if (mLock || b.classList.contains("up")) return; b.classList.add("up"); b.textContent = v;
+    if (!mFirst) { mFirst = b; return; }
+    mMoves++; $("mM").textContent = mMoves;
+    if (mFirst.textContent === v) { mLeft--; mFirst = null; if (!mLeft) { const bb = store.get("b3g_mem"); if (!bb || mMoves < bb) { store.set("b3g_mem", mMoves); $("mB").textContent = mMoves; } } }
+    else { mLock = true; const f = mFirst; mFirst = null; setTimeout(() => { f.classList.remove("up"); f.textContent = "?"; b.classList.remove("up"); b.textContent = "?"; mLock = false; }, 700); }
+  }; m.appendChild(b); });
+}
+$("mReset").onclick = mNew; mNew(); if (store.get("b3g_mem")) $("mB").textContent = store.get("b3g_mem");
+
+/* ---- Reaction ---- */
+let rState = "idle", rT, rTO; const rb = $("rx");
+if (store.get("b3g_rx")) $("rB").textContent = store.get("b3g_rx");
+rb.onclick = () => {
+  if (rState === "idle") { rState = "wait"; rb.className = "rx wait"; rb.textContent = "Wait for green..."; rTO = setTimeout(() => { rState = "go"; rb.className = "rx go"; rb.textContent = "CLICK NOW!"; rT = performance.now(); }, 1200 + Math.random() * 2500); }
+  else if (rState === "wait") { clearTimeout(rTO); rState = "idle"; rb.className = "rx"; rb.textContent = "Too early! Click to retry"; }
+  else { const t = Math.round(performance.now() - rT); rState = "idle"; rb.className = "rx"; rb.textContent = t + " ms. Click to play again"; const b = store.get("b3g_rx"); if (!b || t < b) { store.set("b3g_rx", t); $("rB").textContent = t; } }
+};
+
+/* ---- Whack-a-Target ---- */
+let oS = 0, oTm = 20, oI = null, oS2 = null, oCur = -1; const holes = [];
+for (let i = 0; i < 9; i++) { const b = el("button"); b.onclick = () => { if (i === oCur) { oS++; $("oS").textContent = oS; b.textContent = ""; oCur = -1; } }; holes.push(b); $("mole").appendChild(b); }
+if (store.get("b3g_mole")) $("oB").textContent = store.get("b3g_mole");
+$("oStart").onclick = () => {
+  clearInterval(oI); clearInterval(oS2); oS = 0; oTm = 20; $("oS").textContent = 0; $("oT").textContent = 20;
+  oI = setInterval(() => { holes.forEach(h => h.textContent = ""); oCur = Math.floor(Math.random() * 9); holes[oCur].textContent = "🎯"; }, 750);
+  oS2 = setInterval(() => { oTm--; $("oT").textContent = oTm; if (oTm <= 0) { clearInterval(oI); clearInterval(oS2); holes.forEach(h => h.textContent = ""); oCur = -1; if (oS > store.get("b3g_mole")) { store.set("b3g_mole", oS); $("oB").textContent = oS; } } }, 1000);
+};
+
+/* ---- Rock Paper Scissors ---- */
+const RP = ["✊","✋","✌️"]; const rs = {w: 0, l: 0, d: 0};
+document.querySelectorAll("#g-rps [data-r]").forEach(b => b.onclick = () => {
+  const me = +b.dataset.r, cp = Math.floor(Math.random() * 3), r = (me - cp + 3) % 3;
+  $("rOut").textContent = RP[me] + " vs " + RP[cp];
+  if (r === 0) rs.d++; else if (r === 1) rs.w++; else rs.l++;
+  $("rW").textContent = rs.w; $("rL").textContent = rs.l; $("rD").textContent = rs.d;
+});
+
+/* ---- Number Guess ---- */
+let gN, gTr; if (store.get("b3g_guess")) $("gB").textContent = store.get("b3g_guess");
+function gNew() { gN = 1 + Math.floor(Math.random() * 100); gTr = 0; $("gT").textContent = 0; $("gMsg").textContent = "I picked a number from 1 to 100. Can you find it?"; $("gIn").value = ""; }
+$("gNew").onclick = gNew; gNew();
+$("gGo").onclick = () => {
+  const v = +$("gIn").value; if (!v || v < 1 || v > 100) { $("gMsg").textContent = "Enter a number from 1 to 100."; return; }
+  gTr++; $("gT").textContent = gTr;
+  if (v === gN) { $("gMsg").textContent = "Correct! You got it in " + gTr + " tries."; const b = store.get("b3g_guess"); if (!b || gTr < b) { store.set("b3g_guess", gTr); $("gB").textContent = gTr; } }
+  else $("gMsg").textContent = v < gN ? "Higher ⬆️" : "Lower ⬇️";
+};
+
+/* ---- Loot Box ---- */
+const LOOT = [["🔫","Legendary Weapon Skin",5],["💎","Diamond Pack",10],["🪖","Epic Helmet",20],["🎒","Rare Backpack",25],["🩹","Common Medkit",40]];
+$("lGo").onclick = () => {
+  let r = Math.random() * 100, it = LOOT[LOOT.length - 1];
+  for (const x of LOOT) { if (r < x[2]) { it = x; break; } r -= x[2]; }
+  $("lOut").textContent = it[0]; $("lName").textContent = it[1];
+};
+
+/* ---- Contact ---- */
+function cText() { const n = $("cName").value.trim() || "A fan", m = $("cMsg").value.trim(); return "Hi B3G GAMING, this is " + n + ". " + m; }
+function addC(label, href) { const a = el("a", "act", label); a.href = href; a.target = "_blank"; a.rel = "noopener"; a.style.textDecoration = "none"; $("cBtns").appendChild(a); }
+const lk = n => (CONFIG.links.find(l => l.cls === n) || {}).url;
+if (CONFIG.contactWhatsApp) { const a = el("a", "act", "Send on WhatsApp"); a.target = "_blank"; a.rel = "noopener"; a.style.textDecoration = "none"; a.onclick = () => { a.href = "https://wa.me/" + CONFIG.contactWhatsApp + "?text=" + encodeURIComponent(cText()); }; $("cBtns").appendChild(a); }
+if (CONFIG.contactEmail) { const a = el("a", "act", "Send Email"); a.style.textDecoration = "none"; a.onclick = () => { a.href = "mailto:" + CONFIG.contactEmail + "?subject=" + encodeURIComponent("Message for B3G GAMING") + "&body=" + encodeURIComponent(cText()); }; $("cBtns").appendChild(a); }
+if (lk("ig")) addC("Open Instagram", lk("ig")); if (lk("wa")) addC("Open WhatsApp Channel", lk("wa")); if (lk("fb")) addC("Open Facebook", lk("fb"));
+$("cCopy").onclick = () => { if (!$("cMsg").value.trim()) { $("cNote").textContent = "Write a message first."; return; } try { navigator.clipboard.writeText(cText()); $("cNote").textContent = "Copied. Now paste it in the app you open."; } catch (e) { $("cNote").textContent = "Could not copy. Select the text and copy it by hand."; } };
+
+/* ---- Flappy ---- */
+const fc = $("fc"), fx = fc.getContext("2d"); let fy = 200, fv = 0, pipes = [], fs = 0, fT = null;
+$("fB").textContent = store.get("b3g_flap");
+function fStop() { clearInterval(fT); fT = null; }
+function fStep() {
+  fv += .35; fy += fv; pipes.forEach(p => p.x -= 2.2);
+  if (pipes[pipes.length - 1].x < 170) pipes.push({x: 340, g: 100 + Math.random() * 200});
+  if (pipes[0].x < -50) { pipes.shift(); fs++; $("fS").textContent = fs; }
+  let dead = fy < 0 || fy > 390; pipes.forEach(p => { if (p.x < 62 && p.x > -12 && (fy < p.g - 43 || fy > p.g + 43)) dead = true; });
+  fx.fillStyle = "#0b1a2b"; fx.fillRect(0, 0, 340, 400); fx.fillStyle = "#1faa59";
+  pipes.forEach(p => { fx.fillRect(p.x, 0, 50, p.g - 55); fx.fillRect(p.x, p.g + 55, 50, 400); });
+  fx.fillStyle = "#ffd54a"; fx.beginPath(); fx.arc(50, fy, 12, 0, 7); fx.fill();
+  if (dead) { fStop(); if (fs > store.get("b3g_flap")) { store.set("b3g_flap", fs); $("fB").textContent = fs; } fx.fillStyle = "#fff"; fx.font = "bold 26px sans-serif"; fx.textAlign = "center"; fx.fillText("Game Over", 170, 200); }
+}
+$("fGo").onclick = () => { fStop(); fy = 200; fv = 0; fs = 0; $("fS").textContent = 0; pipes = [{x: 340, g: 200}]; fT = setInterval(fStep, 20); };
+const flap = () => { if (fT) fv = -5.2; };
+fc.addEventListener("pointerdown", flap);
+addEventListener("keydown", e => { if (e.code === "Space" && fT) { e.preventDefault(); flap(); } });
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => { if (t.dataset.g !== "flap") fStop(); }));
+
+/* ---- Online features: gallery, comments, own screenshots ---- */
+(async () => {
+  let db = null, user = null, assets = null, canEdit = false, uid = null;
+  try { if (typeof claude === "undefined") throw 0;
+    db = await claude.use("db"); user = await claude.use("user"); assets = await claude.use("assets");
+    canEdit = !!(user && await user.canEdit()); uid = user && await user.id();
+  } catch (e) {}
+  const src = id => "/_blob/" + id;
+  const pick = cb => { const i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.onchange = async () => { if (!i.files[0]) return; try { const r = await assets.upload(i.files[0]); await cb(r); } catch (e) { alert("Upload failed. Try a smaller picture."); } }; i.click(); };
+  const empty = (box, txt) => { box.textContent = ""; box.appendChild(el("div", "empty", txt)); };
+  const gal = $("gal");
+  if (!db) { empty(gal, "The gallery needs the online version of this page. Open it from the published link while signed in to claude.ai."); empty($("gbList"), "Comments are not available in this view. Use the buttons to message me directly."); return; }
+
+  if (canEdit && assets) {
+    const b = el("button", "act", "+ Add photo"); b.onclick = () => pick(r => db.collection("gallery").doc(r.id).set({aid: r.id, t: Date.now()})); $("galTools").appendChild(b);
+    document.querySelectorAll("#ids .card").forEach(c => { const e = el("button", "copy edit", "Use my screenshot"); e.onclick = () => pick(r => db.collection("covers").doc(c.dataset.k).set({aid: r.id})); c.appendChild(e); });
+  }
+  db.collection("gallery").orderBy("t", "desc").limit(60).onSnapshot(sn => {
+    gal.textContent = ""; if (sn.empty) return empty(gal, canEdit ? "No photos yet. Tap Add photo." : "Photos coming soon.");
+    sn.docs.forEach(d => { const f = el("figure"), im = el("img"); im.src = src(d.data().aid); im.alt = "Gallery photo"; im.loading = "lazy"; f.appendChild(im);
+      if (canEdit) { const x = el("button", "", "✕"); x.onclick = () => db.collection("gallery").doc(d.id).delete(); f.appendChild(x); } gal.appendChild(f); });
+  }, () => empty(gal, "Gallery could not load."));
+  db.collection("covers").onSnapshot(sn => sn.docs.forEach(d => { const a = document.querySelector('#ids .card[data-k="' + d.id + '"] .art'); if (a && d.data().aid) { a.textContent = ""; const im = el("img"); im.src = src(d.data().aid); im.alt = ""; im.style.cssText = "width:100%;height:150px;object-fit:cover;display:block"; a.appendChild(im); } }), () => {});
+
+  const form = $("gbForm");
+  if (uid) {
+    const n = el("input"); n.placeholder = "Your name"; n.maxLength = 40; const m = el("textarea"); m.placeholder = "Write a comment..."; m.rows = 3; m.maxLength = 400;
+    const b = el("button", "act", "Post comment"); const w = el("div", "fm"); w.append(n, m, b); form.appendChild(w);
+    b.onclick = async () => { if (!m.value.trim()) return; try { await db.collection("guestbook").doc(uid).set({name: n.value.trim() || "Fan", msg: m.value.trim(), t: Date.now()}); m.value = ""; } catch (e) { alert("Could not post. Your account may only have view access."); } };
+  } else form.appendChild(el("div", "empty", "Sign in to claude.ai to post a comment."));
+  db.collection("guestbook").orderBy("t", "desc").limit(30).onSnapshot(sn => {
+    const l = $("gbList"); l.textContent = ""; if (sn.empty) return empty(l, "No comments yet. Be the first!");
+    sn.docs.forEach(d => { const x = d.data(), c = el("div", "msg"); c.appendChild(el("b", "", String(x.name || "Fan"))); c.appendChild(el("small", "", " - " + new Date(x.t).toLocaleDateString())); c.appendChild(el("div", "", String(x.msg || ""))); l.appendChild(c); });
+  }, () => empty($("gbList"), "Comments could not load."));
+})();
+
+/* ---- Visitor counter ---- */
+(async () => {
+  const box = $("visitCount");
+  try {
+    if (typeof claude === "undefined") throw 0;
+    const db = await claude.use("db"); if (!db) throw 0;
+    const ref = db.doc("stats/visits");
+    let seen = false; try { seen = sessionStorage.getItem("b3g_counted") === "1"; } catch (e) {}
+    if (!seen) { try { await ref.set({ n: (await (async () => { try { const s = await ref.get(); return (s.data() && s.data().n) || 0; } catch (e) { return 0; } })()) + 1 }); sessionStorage.setItem("b3g_counted", "1"); } catch (e) {} }
+    ref.onSnapshot(s => { const n = s.data() && s.data().n; box.textContent = typeof n === "number" ? n.toLocaleString() : "—"; }, () => box.textContent = "—");
+  } catch (e) {
+    try { let c = Number(localStorage.getItem("b3g_visits_local")) || 0; c++; localStorage.setItem("b3g_visits_local", c); box.textContent = c.toLocaleString() + " (this browser)"; } catch (e2) { box.textContent = "—"; }
+  }
+})();
+
+/* ---- Multi theme picker ---- */
+(() => {
+  const root = document.documentElement, row = $("themeRow"); if (!row) return;
+  let t = "light"; try { t = localStorage.getItem("b3g_theme") || "light"; } catch (e) {}
+  const mark = () => row.querySelectorAll(".sw").forEach(b => b.classList.toggle("on", b.dataset.t === t));
+  const apply = v => { t = v; root.setAttribute("data-theme", v); mark(); try { localStorage.setItem("b3g_theme", v); } catch (e) {} };
+  apply(t);
+  row.querySelectorAll(".sw").forEach(b => b.onclick = () => apply(b.dataset.t));
+})();
+
+/* ---- Daily Challenge (unique, offline, changes once a day) ---- */
+(() => {
+  const list = [
+    {g: "snake", t: "Snake", c: "Score 15 or more in one run."},
+    {g: "aim", t: "Aim Trainer", c: "Hit 18+ targets in 20 seconds."},
+    {g: "ttt", t: "Tic-Tac-Toe", c: "Beat the computer without losing a round."},
+    {g: "mem", t: "Memory", c: "Clear the board in 10 moves or fewer."},
+    {g: "rx", t: "Reaction", c: "React in under 300 ms."},
+    {g: "mole", t: "Whack-a-Target", c: "Score 12+ in 20 seconds."},
+    {g: "rps", t: "Rock Paper Scissors", c: "Win 3 rounds in a row."},
+    {g: "guess", t: "Number Guess", c: "Find the number in 7 tries or fewer."},
+    {g: "loot", t: "Loot Box", c: "Open 3 crates for fun."},
+    {g: "flap", t: "Flappy", c: "Score 10 or more pipes."}
+  ];
+  const day = Math.floor(Date.now() / 86400000);
+  const pick = list[day % list.length];
+  const box = $("dailyChallenge"); if (!box) return;
+  const left = document.createElement("div");
+  left.innerHTML = "";
+  const tag = document.createElement("b"); tag.textContent = "Today's Challenge"; left.appendChild(tag);
+  const line = document.createElement("div"); line.textContent = pick.t + " — " + pick.c; left.appendChild(line);
+  box.appendChild(left);
+  const a = document.createElement("a"); a.className = "dcbtn"; a.href = "#arcade"; a.textContent = "Play now";
+  a.onclick = () => setTimeout(() => { const tab = document.querySelector('.tab[data-g="' + pick.g + '"]'); if (tab) tab.click(); }, 350);
+  box.appendChild(a);
+})();
+
+/* ---- Player rank (counts games started, saved locally) ---- */
+(() => {
+  const tiers = [[0,"Rookie"],[5,"Gamer"],[15,"Pro"],[30,"Legend"],[50,"B3G Champion"]];
+  const badge = $("rankBadge"); if (!badge) return;
+  const bump = () => { let n = store.get("b3g_plays") + 1; store.set("b3g_plays", n); render(n); };
+  const render = n => { let name = tiers[0][1]; for (const [t, nm] of tiers) if (n >= t) name = nm; badge.textContent = "\uD83C\uDFAE " + name + " (" + n + ")"; };
+  render(store.get("b3g_plays"));
+  ["sStart","aStart","tReset","mReset","oStart","gNew","lGo","fGo"].forEach(id => { const el2 = $(id); if (el2) el2.addEventListener("click", bump); });
+  const rx2 = $("rx"); if (rx2) rx2.addEventListener("click", bump);
+  document.querySelectorAll(".rps button").forEach(b => b.addEventListener("click", bump));
+})();
+
+/* ---- Share button ---- */
+(() => { const b = $("shareBtn"); if (!b) return;
+  b.onclick = async () => {
+    const data = { title: document.title, url: location.href };
+    try { if (navigator.share) { await navigator.share(data); return; } } catch (e) {}
+    try { await navigator.clipboard.writeText(location.href); b.textContent = "✅"; setTimeout(() => b.textContent = "🔗", 1500); } catch (e) {}
+  };
+})();
+</script>
+<script type="module" src="/main.js"></script>
+</body>
+</html>
